@@ -14,8 +14,25 @@ pipeline {
     }
 
     stage('UI testing') {
-      steps {
-        echo 'Ui'
+      parallel {
+        stage('UI testing') {
+          steps {
+            echo 'Ui'
+          }
+        }
+
+        stage('API') {
+          steps {
+            echo 'api'
+          }
+        }
+
+        stage('DB') {
+          steps {
+            echo 'Db'
+          }
+        }
+
       }
     }
 
